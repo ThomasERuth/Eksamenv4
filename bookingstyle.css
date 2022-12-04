@@ -1,0 +1,440 @@
+* {
+    list-style: none;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+background-image: url(wave-haikei-2.svg);
+background-repeat: no-repeat;
+background-size: cover;
+}
+
+/* Styling av header/navigasjon starter her */
+
+/* Styling av header/navigasjon starter her */
+nav {
+    grid-area: nav;
+    display: inline-block;
+    background-color: #333333;
+    height: 80px;
+    width: 100%;
+}
+
+/*Treffer logoen til nettsiden*/
+.logo {
+    display: inline-block;
+    font-family: "poppins", sans-serif;
+    font-size: 35px;
+    line-height: 80px;
+    padding: 0 50px;
+}
+
+/*For å treffe linker må de bli targetet direkte*/
+.logo a {
+    color: #fff;
+}
+
+/*Flytter lista med linker til høyre*/
+nav ul {
+    float: right;
+    margin-right: 20px;
+    
+}
+
+/*Sørger for mellomrom mellom listeenhetene og at de står midt på navigasjonsbaren vertikalt*/
+nav ul li {
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 5px;
+}
+
+/*Targeter linken direkte*/
+nav ul li a {
+    font-family: "poppins", sans-serif;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 17px;
+    padding: 7px 13px;
+    text-transform: capitalize;
+}
+
+nav .aktiv  {
+    color: #111;
+}
+
+/*Aktiv klassen har alltid en farge rundt seg, de andre linkene får det når pila er over dem*/
+nav a.aktiv, nav a:hover {
+    background-color: #d5d5d5;
+    transition: all 0.3s ease;
+    color: #111;
+}
+
+/*Design av knappen man trykker på ved mindre skjermer*/
+nav .checkbtn {
+
+    line-height: 80px;
+    font-size: 30px;
+    color: #fff;
+    float: right;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+}
+
+nav #check { 
+    float: right;
+    position: relative;
+    top: 30px;
+    right: 55px;
+    cursor: pointer;
+    display: none;
+}
+
+@media (min-width: 1500px) {
+    nav {
+        padding: 0 10%
+    }
+}
+
+@media (max-width: 1000px) {
+
+    nav .logo {
+        font-size: 20px;
+        padding: 0 10px;
+    }
+
+        /*Gjør at knappen blir synlig*/
+    nav .checkbtn {
+        display: block;
+    }
+
+    /*Flytter navigasjonen ut av skjermen*/
+    nav ul {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background-color: #bababa;
+        top: 80px;
+        left: -100%;
+        text-align: center;
+        transition: all 0.5s ease;
+    }
+
+    nav ul li {
+        display: block;
+    }
+
+    /*Flytter navigasjonen inn i skjermen ved touch*/
+    nav #check:checked ~ ul {
+        left: 0;
+    }
+} 
+
+/* Styling av hovedinnhold */
+.bookingHeader{
+    font-size: 3.8vw;
+    text-align: left;
+    font-family: sans-serif;
+    padding-left: 20%;
+    padding-top: 40px;
+    padding-bottom: 15px;
+    color: #ffffff;
+}
+
+.bookingInfo{
+    position: inline;
+    font-size: 1.2vw;
+    text-align: left;
+    font-family: "poppins", sans-serif;
+    padding-left: 20%;
+    padding-right: 40%;
+    padding-bottom: 150px;
+    color:#ffffff;
+    line-height: 1.3;
+}
+
+.bookingInfo a{
+    color: #fff;
+    font-weight: 800;
+    text-decoration:underline;
+
+}
+
+.bookingPic{
+    position: inline;
+    float: right;
+    border-radius: 10px;
+    max-width: 950px;
+    margin-right: 7%;
+    width: 25%;
+    height: auto;
+}
+
+.lokaleContainer{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin-bottom: 50px;
+    width: 100%;
+    height: auto;
+}
+
+.lokaleContainerReverse{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row-reverse;
+    justify-content: center;
+    margin-bottom: 50px;
+    width: 100%;
+    height: auto;
+}
+
+.lokaleHeader{
+    font-size: 60px;
+    text-align: center;
+    font-family: "poppins", sans-serif;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    color: #fff;
+}
+
+.lokaleInfo{
+    font-size: 20px;
+    position: relative;
+    padding-left: 25%;
+    padding-right: 25%;
+    padding-bottom: 50px;
+    font-family: sans-serif;
+    color: #fff;
+}
+
+.infoboks-container{
+    display: grid;
+    background-color: #595959;
+    margin-right: 40px;
+    margin-left: 40px;
+    grid-template-columns: 50% 50%;
+    border-radius: 10px;
+}
+
+.infoboks-item {
+    font-size: 15px;
+    font-family: sans-serif;
+    color: rgb(255, 255, 255);
+    border: 1px solid rgba(192, 190, 190, 0.8);
+    padding: 15%;
+    border-radius: 10px;
+}
+
+.infoboks-pic{
+    margin-left: 40px;
+    border-radius: 10px;
+    max-width: 950px;
+    width: 60%;
+    height: 100%;
+}
+
+.infoboks-pic-reverse{
+    margin-right: 40px;
+    border-radius: 10px;
+    max-width: 950px;
+    width: 60%;
+    height: 100%;
+}
+
+@media (max-width: 900px){
+    .lokaleContainer{
+        flex-direction: column;
+    }
+
+    .lokaleContainerReverse{
+        flex-direction: column;
+    }
+
+    .lokaleHeader{
+        font-size: 10vw;
+    }
+
+    .lokaleInfo{
+        text-align: center;
+        font-size: 3vw;
+        padding-left: 15%;
+        padding-right: 10%;
+    }
+    .infoboks-container{
+        margin-left: 25%;
+        margin-right: 25%;
+        margin-top: 40px;
+    }
+
+    .infoboks-pic{
+        max-width: 650px;
+        width: 75%;
+        margin-left: 15%;
+    }
+
+    .infoboks-pic-reverse{
+        max-width: 650px;
+        width: 75%;
+        margin-left: 15%;
+    }
+
+    .bookingHeader{
+        font-size: 5vw;
+        padding-left: 15%;
+    }
+
+    .bookingInfo{
+        font-size: 3vw;
+        text-align: center;
+        padding-left: 15%;
+        padding-right: 15%;
+        padding-bottom: 210px;
+    }
+
+    .bookingPic{
+        display: none;
+    }
+}
+
+
+
+/* Styling av footeren starter her */
+footer {
+    grid-area: footer;
+    margin: 20px 10px;
+    background-color: #221a1a;
+    padding: 70px 0;
+    line-height: 1.5;
+    font-family: 'Poppins' ,sans-serif;
+    text-align: left;
+}
+
+/*Container som inneholder hele footerinnholdet*/
+footer .container {
+    max-width: 1170px;
+    margin: auto;
+}
+
+/*Rekken som de forskjellige kolonene står i*/
+footer .row {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 10px;
+}
+
+/*Hver enkelt kolonne*/
+footer .footer-col {
+    width: 25%;
+    padding: 15px 0;  
+}
+
+/*Overskrift for hver enkelt kolonne*/
+footer .footer-col h4 {
+    font-size: 18px;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+/*Hver enkelt liste*/
+footer ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;    
+}
+
+/*Hver link i hver liste*/
+footer ul li a {
+    color: #d5d5d5;
+    text-transform: capitalize;
+    text-decoration: none;
+    font-weight: 300;
+    display: block;
+    padding-top: 4px;
+    transition: all 0.3s ease;
+}
+
+/*Adressen i den ene kolonnen*/
+footer ul li address {
+    color: #d5d5d5;
+    font-style: normal;
+    text-transform: capitalize;
+    text-decoration: none;
+    font-weight: 300;
+    display: block;
+    padding-top: 4px;
+    }
+
+/*Tekst i hver enkelt liste*/
+footer ul li p {
+    color: #d5d5d5;
+    font-style: normal;
+    text-transform: capitalize;
+    text-decoration: none;
+    font-weight: 300;
+    display: block;
+    padding-top: 4px;
+    }
+
+/*Når man har pekeren over en link*/
+footer ul li a:hover {
+    color: #fff;
+    margin-left: 8px;
+}
+
+/*Egen design for sosiale medier kolonnen*/
+footer .sosial a {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: #d5d5d5;
+    margin-right: 10px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%; 
+    color: #221a1a;   
+    transition: all 0.3s ease;
+}
+
+/*Egen design for sosiale medier kolonnen når pekeren er over*/
+footer .sosial a:hover {
+    background-color: #fff;
+    height: 60px;
+    width: 60px;
+    line-height: 60px;
+    font-size: 30px;
+}
+
+@media (max-width: 800px) {    
+    footer .sosial {
+        width: 50%;
+    }
+}
+
+/*Gjør at to og to kolonner står ved siden av hverandre*/
+@media (max-width: 700px) {
+    footer .footer-col {
+        width: 50%;
+        margin-bottom: 30px;
+    }
+}
+
+/*Gjør blant annet at kolonnene står en og en*/
+@media(max-width: 574px) {
+    footer {
+        padding: 10px;
+    }
+
+    footer .footer-col {
+        margin: 0 25%;
+    }
+
+    footer .sosial {
+        width: 100%;
+    }
+}

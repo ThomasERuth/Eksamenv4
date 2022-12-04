@@ -1,0 +1,413 @@
+* {
+        list-style: none;
+        text-decoration: none;
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+}
+
+/*Bakgrunn er en SVG, hentet fra nettsiden: https://haikei.app og designet selv der*/
+body {
+    background-image: url(../svg/wave-haikei-3.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Gridden bestemmer rekker og kolonner, og hvor store de skal være*/
+.grid {
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    grid-template-rows: auto auto  auto;
+    grid-template-areas: 
+    "nav nav nav"
+    ". content ."
+    "footer footer footer";
+}
+
+/* Styling av header/navigasjon starter her */
+
+nav {
+    grid-area: nav;
+    display: inline-block;
+    background-color: #333333;
+    height: 80px;
+    width: 100%;
+}
+/*Treffer logoen til nettsiden*/
+.logo {
+    display: inline-block;
+    font-family: "poppins", sans-serif;
+    font-size: 35px;
+    line-height: 80px;
+    padding: 0 50px;
+}
+/*For å treffe linker må de bli targetet direkte*/
+.logo a {
+    color: #fff;
+}
+
+/*Flytter lista med linker til høyre*/
+nav ul {
+    float: right;
+    margin-right: 20px;
+    
+}
+
+/*Sørger for mellomrom mellom listeenhetene og at de står midt på navigasjonsbaren vertikalt*/
+nav ul li {
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 5px;
+}
+
+/*Targeter linken direkte*/
+nav ul li a {
+    font-family: "poppins", sans-serif;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 17px;
+    padding: 7px 13px;
+    text-transform: capitalize;
+}
+
+nav .aktiv {
+    color: #111;
+}
+
+/*Aktiv klassen har alltid en farge rundt seg, de andre linkene får det når pila er over dem*/
+nav a.aktiv, nav a:hover {
+    background-color: #d5d5d5;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    color: #111;
+}
+
+/*Design av knappen man trykker på ved mindre skjermer*/
+nav .checkbtn {
+
+    line-height: 80px;
+    font-size: 30px;
+    color: #fff;
+    float: right;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+}
+
+nav #check { 
+    float: right;
+    position: relative;
+    top: 30px;
+    right: 55px;
+    cursor: pointer;
+    display: none;
+}
+
+@media (min-width: 1500px) {
+    nav {
+        padding: 0 10%
+    }
+}
+
+@media (max-width: 1000px) {
+
+    nav .logo {
+        font-size: 20px;
+        padding: 0 10px;
+    }
+
+    /*Gjør at knappen blir synlig*/
+    nav .checkbtn {
+        display: block;
+    }
+    /*Flytter navigasjonen ut av skjermen*/
+    nav ul {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background-color: #333333;
+        top: 80px;
+        left: -100%;
+        text-align: center;
+        transition: all 0.5s ease;
+    }
+
+    nav ul li {
+        display: block;
+    }
+
+    /*Flytter navigasjonen inn i skjermen ved touch*/
+    nav #check:checked ~ ul {
+        left: 0;
+    }
+} 
+
+
+/* Styling av hovedinnholdet starter her */
+
+main {
+    grid-area: content;
+    display: inline-block;
+    margin-top: 50px
+}
+
+.container {
+    margin-top: 100px;
+}
+
+main .container .tekstVS {
+    width: 50%;
+    height: 400px;
+    display: inline-block;
+
+
+}
+
+main h2 {
+    margin: 100px 0 30px;
+    display: inline-block;
+    font-size: 60px;
+    font-family: "poppins", sans-serif;
+    color: #fff;
+}
+
+main p {
+    
+    font-family: "poppins", sans-serif;
+    color: #fff;
+    line-height: 1.5;
+    font-size: 20px;
+}
+
+main .container p span {
+    font-weight: 800;
+}
+
+main .container img{
+    width: 40%;
+    float: right;
+    border-radius: 10px;
+}
+
+
+
+main .container img:nth-child(3){
+    position: relative;
+    bottom: 100px;
+    margin-left: 100%;
+}
+
+main .container .tekstHS {
+    width: 50%;
+    float: right;
+}
+
+main .container .tekstHS h3 {
+    font-family: "poppins", sans-serif;
+    font-size: 60px;
+    color: #fff;
+    margin-bottom: 30px;
+}
+
+/*Link som leder til booking siden*/
+main .container .tekstHS .booking p {
+    padding: 30px;
+    margin: 20px 0;
+    text-align: center;
+    background-color: #221a1a;
+    border-radius: 10px;
+    font-size: 30px;
+    font-weight: 800;
+    transition: all 0.5s ease;
+}
+/*Gjør at linken endrer farge*/
+main .container .tekstHS .booking :hover {
+    background-color: #fff;
+    color: #111;
+}
+
+main .container #villabilde {
+    float: left;
+    margin-right: 10%;
+}
+
+@media (max-width: 900px) {
+    main .container img:nth-child(3) {
+        display: none;
+    }
+
+    main .container img {
+        width: 100%;
+        margin-top: 40px;
+    }
+
+    main {
+        margin-top: -px;
+    }
+
+    .container {
+        margin-top: 0;
+    }
+
+    main .container .tekstVS {
+        width: 100%;
+    }
+
+    main .container .tekstHS {
+        width: 100%;
+        padding-top: 50px;
+    }
+
+    main .container .tekstHS h3 {
+       color: #fff;
+       font-size: 30px;
+    }
+    /*Fjerner SVG-bakgrunnen ved liten skjerm*/
+    body {
+        background-image: none;
+        background-color: #111;
+    }
+
+    main .container .tekstHS .booking p {
+        background-color: #333333;
+    }
+}
+
+/* Styling av footeren starter her */
+footer {
+    grid-area: footer;
+    margin: 20px 10px;
+    background-color: #221a1a;
+    padding: 70px 0;
+    line-height: 1.5;
+    font-family: 'Poppins' ,sans-serif;
+    text-align: left;
+}
+
+/*Container som inneholder hele footerinnholdet*/
+footer .container {
+    max-width: 1170px;
+    margin: auto;
+}
+
+/*Rekken som de forskjellige kolonene står i*/
+footer .row {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 10px;
+}
+
+/*Hver enkelt kolonne*/
+footer .footer-col {
+    width: 25%;
+    padding: 15px 0;  
+}
+
+/*Overskrift for hver enkelt kolonne*/
+footer .footer-col h4 {
+    font-size: 18px;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+/*Hver enkelt liste*/
+footer ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;    
+}
+
+/*Hver link i hver liste*/
+footer ul li a {
+    color: #d5d5d5;
+    text-transform: capitalize;
+    text-decoration: none;
+    font-weight: 300;
+    display: block;
+    padding-top: 4px;
+    transition: all 0.3s ease;
+}
+
+/*Adressen i den ene kolonnen*/
+footer ul li address {
+    color: #d5d5d5;
+    font-style: normal;
+    text-transform: capitalize;
+    text-decoration: none;
+    font-weight: 300;
+    display: block;
+    padding-top: 4px;
+    }
+
+/*Tekst i hver enkelt liste*/
+footer ul li p {
+    color: #d5d5d5;
+    font-style: normal;
+    text-transform: capitalize;
+    text-decoration: none;
+    font-weight: 300;
+    display: block;
+    padding-top: 4px;
+    }
+
+/*Når man har pekeren over en link*/
+footer ul li a:hover {
+    color: #fff;
+    margin-left: 8px;
+}
+
+/*Egen design for sosiale medier kolonnen*/
+footer .sosial a {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: #d5d5d5;
+    margin-right: 10px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%; 
+    color: #221a1a;   
+    transition: all 0.3s ease;
+}
+
+/*Egen design for sosiale medier kolonnen når pekeren er over*/
+footer .sosial a:hover {
+    background-color: #fff;
+    height: 60px;
+    width: 60px;
+    line-height: 60px;
+    font-size: 30px;
+}
+
+@media (max-width: 800px) {    
+    footer .sosial {
+        width: 50%;
+    }
+}
+
+/*Gjør at to og to kolonner står ved siden av hverandre*/
+@media (max-width: 700px) {
+    footer .footer-col {
+        width: 50%;
+        margin-bottom: 30px;
+    }
+}
+
+/*Gjør blant annet at kolonnene står en og en*/
+@media(max-width: 574px) {
+    footer {
+        padding: 10px;
+    }
+
+    footer .footer-col {
+        margin: 0 25%;
+    }
+
+    footer .sosial {
+        width: 100%;
+    }
+}
